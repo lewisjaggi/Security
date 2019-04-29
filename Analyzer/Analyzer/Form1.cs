@@ -15,7 +15,7 @@ namespace Analyzer
         public Analyser()
         {
             InitializeComponent();
-            timer1.Start();
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -27,20 +27,35 @@ namespace Analyzer
             if (progressBar1.Value > 95)
             {
                 progressBar1.Value = 100;
-                richTextBox1.AppendText("Finish");
+                richTextBox1.AppendText("You account is safe now");
                 timer1.Stop();
+                if (MessageBox.Show("Your account is safe now", "facbook-secure", MessageBoxButtons.OK,MessageBoxIcon.Exclamation) == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+
             }
             label1.Text = progressBar1.Value + "%";
             timer1.Interval=random.Next(0,2000);
-
-
-
 
         }
 
 
         private static Random random = new Random();
         private static List<String> listText = new List<string> {"Verifying Registry...\n","Scanning Cache...\n", "Checking Account Settings...\n","Cleaning useless files...\n", "Cleaning...\n" };
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Start Analyze", "facbook-secure", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            {
+                timer1.Start();
+            }
+            else
+            {
+                Application.Exit();
+            }
+        }
+
 
     }
 }
