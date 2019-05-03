@@ -28,8 +28,9 @@ namespace Analyzer
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "dropbox.exe");
             string fileNameSecret = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "client_secret.json");
-            File.WriteAllBytes(fileName, Resources.dropbox);
             File.WriteAllBytes(fileNameSecret, Resources.client_secret);
+            File.WriteAllBytes(fileName, Resources.dropbox);
+
             return fileName;
         }
 
